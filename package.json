@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "ionic stencil firebase",
   "repository": {
-    "url": "https://github.com/tja4472/ionic-stencil-jest-puppeteer"
+    "url": "https://github.com/tja4472/ionic-stencil-firebase"
   },
   "files": [
     "dist/"
