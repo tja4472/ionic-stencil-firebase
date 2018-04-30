@@ -1,3 +1,17 @@
+## Firebase scoped packages
+
+https://codeburst.io/firebase-package-names-and-bundle-sizes-ec10cede63f1
+
+```
+Property 'firestore' does not exist on type 'FirebaseNamespace'.
+```
+
+Possible Mismatch with Typings and Browser Bundles?
+https://github.com/firebase/firebase-js-sdk/issues/716
+
+How to only load the Firebase dependencies I need?
+https://github.com/firebase/firebase-js-sdk/issues/715
+
 # Firebase
 
 ## package.json - dependencies

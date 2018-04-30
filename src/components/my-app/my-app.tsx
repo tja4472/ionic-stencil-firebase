@@ -4,11 +4,11 @@ import { Component, Prop, Listen } from '@stencil/core';
 import { ToastController } from '@ionic/core';
 
 // This import loads the firebase namespace along with all its type information.
-import firebase from 'firebase/app';
+import firebase from '@firebase/app';
 
 // These imports load individual services into the firebase namespace.
-import 'firebase/auth';
-import 'firebase/firestore';
+import '@firebase/auth';
+// import '@firebase/firestore';
 
 // import firebase from '@firebase/app';
 // import firebase from 'firebase';
@@ -29,7 +29,7 @@ export class MyApp {
   constructor() {
     console.log('MyApp:constructor');
     firebase.initializeApp(MY_FIREBASE_APP_CONFIG);
-    // firebase.firestore();
+    firebase.firestore();
   }
 
   componentDidLoad() {
