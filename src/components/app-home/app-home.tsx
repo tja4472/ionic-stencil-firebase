@@ -29,7 +29,12 @@ export class AppHome {
             my-custom-attr="My Custom Attr"
           />
 
-          <ion-button data-testId="showModalPageButton" href={'/show-modal'}>Show Modal page</ion-button>
+          <ion-button data-testId="showModalPageButton" href={'/show-modal'}>
+            Show Modal page
+          </ion-button>
+          <ion-button href={'/firebase'}>
+            Show Firebase page
+          </ion-button>          
         </ion-content>
       </ion-page>
     );

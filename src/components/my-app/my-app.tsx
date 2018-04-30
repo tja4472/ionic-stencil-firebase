@@ -3,13 +3,34 @@ import '@stencil/core';
 import { Component, Prop, Listen } from '@stencil/core';
 import { ToastController } from '@ionic/core';
 
+// This import loads the firebase namespace along with all its type information.
+import firebase from 'firebase/app';
+
+// These imports load individual services into the firebase namespace.
+import 'firebase/auth';
+import 'firebase/firestore';
+
+// import firebase from '@firebase/app';
+// import firebase from 'firebase';
+
+// These imports load individual services into the firebase namespace.
+// import '@firebase/auth';
+// import '@firebase/firestore';
+import { MY_FIREBASE_APP_CONFIG } from './my-firebase-app-config';
+
 @Component({
   tag: 'my-app',
-  styleUrl: 'my-app.scss'
+  styleUrl: 'my-app.scss',
 })
 export class MyApp {
+  @Prop({ connect: 'ion-toast-controller' })
+  toastCtrl: ToastController;
 
-  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+  constructor() {
+    console.log('MyApp:constructor');
+    firebase.initializeApp(MY_FIREBASE_APP_CONFIG);
+    // firebase.firestore();
+  }
 
   componentDidLoad() {
     /*
@@ -22,14 +43,16 @@ export class MyApp {
       and serve the fresh content
     */
     window.addEventListener('swUpdate', () => {
-      this.toastCtrl.create({
-        message: 'New version available',
-        showCloseButton: true,
-        closeButtonText: 'Reload'
-      }).then((toast) => {
-        toast.present();
-      });
-    })
+      this.toastCtrl
+        .create({
+          message: 'New version available',
+          showCloseButton: true,
+          closeButtonText: 'Reload',
+        })
+        .then((toast) => {
+          toast.present();
+        });
+    });
   }
 
   @Listen('body:ionToastWillDismiss')
@@ -42,10 +65,11 @@ export class MyApp {
       <ion-app>
         <main>
           <ion-router useHash={false}>
-            <ion-route url='/' component='app-home'></ion-route>
-            <ion-route url='/profile/:name' component='app-profile'></ion-route>
-            <ion-route url='/show-modal' component='tjaexa-show-modal'></ion-route>
-            <ion-nav></ion-nav>
+            <ion-route url="/" component="app-home" />
+            <ion-route url="/firebase" component="app-firebase" />
+            <ion-route url="/profile/:name" component="app-profile" />
+            <ion-route url="/show-modal" component="tjaexa-show-modal" />
+            <ion-nav />
           </ion-router>
         </main>
       </ion-app>

@@ -33,6 +33,39 @@ import {
 declare global {
 
   namespace StencilComponents {
+    interface AppFirebase {
+
+    }
+  }
+
+  interface HTMLAppFirebaseElement extends StencilComponents.AppFirebase, HTMLStencilElement {}
+
+  var HTMLAppFirebaseElement: {
+    prototype: HTMLAppFirebaseElement;
+    new (): HTMLAppFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-firebase': HTMLAppFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    'app-firebase': HTMLAppFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-firebase': JSXElements.AppFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppFirebaseAttributes extends HTMLAttributes {
+
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface AppHome {
 
     }

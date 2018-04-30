@@ -1,8 +1,8 @@
 {
-  "name": "stencil-jest-puppeteer",
+  "name": "ionic-stencil-firebase",
   "private": true,
   "version": "0.0.1",
-  "description": "stencil jest puppeteer",
+  "description": "ionic stencil firebase",
   "repository": {
     "url": "https://github.com/tja4472/ionic-stencil-jest-puppeteer"
   },
@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "@ionic/core": "4.0.0-alpha.3",
-    "@stencil/core": "0.7.27-4"
+    "@stencil/core": "0.7.27-4",
+    "firebase": "4.13.1",
+    "rxjs": "6.0.0"
   },
   "devDependencies": {
     "@stencil/dev-server": "0.0.18",

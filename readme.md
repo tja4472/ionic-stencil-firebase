@@ -1,5 +1,39 @@
-e2e
-npm test -- --maxWorkers=1
+# Firebase
+
+## package.json - dependencies
+
+```
+"firebase": "4.13.1"
+```
+
+## Requires src/components/my-app/my-firebase-app-config.ts
+
+```typescript
+import { FirebaseOptions } from '@firebase/app-types';
+
+export const MY_FIREBASE_APP_CONFIG: FirebaseOptions = {
+  apiKey: 'XXXXXX',
+  authDomain: 'XXXXXX',
+  databaseURL: 'XXXXXX',
+  projectId: 'XXXXXX',
+  storageBucket: 'XXXXXX',
+};
+```
+
+## stencil.config.js
+
+```js
+exports.config = {
+  nodeResolve: {
+    browser: true
+  },  
+```
+
+## Firebase documentation
+
+https://firebase.google.com/docs/firestore/?authuser=0
+
+https://firebase.google.com/docs/auth/web/start?authuser=0
 
 # Setup
 
