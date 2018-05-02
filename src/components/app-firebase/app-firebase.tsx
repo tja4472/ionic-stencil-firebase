@@ -5,7 +5,6 @@ import firebase from 'firebase/app';
 
 // import firebase from 'firebase';
 
-
 // import firebase from '@firebase/app';
 // import '@firebase/auth';
 // import '@firebase/firestore';
@@ -154,7 +153,7 @@ export class AppFirebase {
       if (firebaseUser) {
         this.authIsAuthorized$.next(true);
         this.userId = firebaseUser.uid;
-        console.log('userId>', this.userId);        
+        console.log('userId>', this.userId);
       } else {
         this.authIsAuthorized$.next(false);
         this.userId = null;
@@ -163,99 +162,97 @@ export class AppFirebase {
   }
 
   render() {
-    return (
-      <ion-page>
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-buttons slot="start">
-              <stencil-route-link url="/">
-                <ion-button>
-                  <ion-icon slot="icon-only" name="arrow-back" />
-                </ion-button>
-              </stencil-route-link>
-            </ion-buttons>
-            <ion-title>Firebase</ion-title>
-          </ion-toolbar>
-        </ion-header>
+    return [
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <stencil-route-link url="/">
+              <ion-button>
+                <ion-icon slot="icon-only" name="arrow-back" />
+              </ion-button>
+            </stencil-route-link>
+          </ion-buttons>
+          <ion-title>Firebase</ion-title>
+        </ion-toolbar>
+      </ion-header>,
 
-        <ion-content>
-          <stencil-route-link url="/profile/stencil">
-            <ion-button>AAAAAAA</ion-button>
-          </stencil-route-link>
-          <ion-grid>
-            <ion-row>
-              <ion-col col-6>
-                <ion-item>
-                  <ion-input
-                    type="email"
-                    placeholder="Email"
-                    value={this.email}
-                    onInput={(event) => this.handleEmailChange(event)}
-                  />
-                </ion-item>
-              </ion-col>
-              <ion-col col-6>
-                <ion-item>
-                  <ion-input
-                    type="password"
-                    placeholder="Password"
-                    value={this.password}
-                    min-length='7'
-                    onInput={(event) => this.handlePasswordChange(event)}
-                  />
-                </ion-item>
-                <ion-button float-right onClick={() => this.doSignIn()}>
-                  Sign In
-                </ion-button>
-                <ion-button float-right onClick={() => this.doSignOut()}>
-                  Sign Out
-                </ion-button>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-item>
-                <div>
-                  Has Checked:{' '}
-                  {this.hasChecked ? <scan>True</scan> : <scan>False</scan>}
-                </div>
-                <p>AAAAA: {JSON.stringify(this.hasChecked)}</p>
-              </ion-item>
-            </ion-row>
-            <ion-row>
-              <ion-item>
-                <div>
-                  Is Authorized:{' '}
-                  {this.isAuthorized ? <scan>True</scan> : <scan>False</scan>}
-                </div>
-                <div>BBBBB: {JSON.stringify(this.isAuthorized)}</div>
-              </ion-item>
-            </ion-row>
-            <ion-row>
-              <ion-item>
-                <ion-button onClick={() => this.doListenForData()}>
-                  Listen for data
-                </ion-button>
-              </ion-item>
-            </ion-row>
-            <ion-row>
-              <ion-item>
-                <div>Data: {JSON.stringify(this.data)}</div>
-              </ion-item>
-            </ion-row>
-          </ion-grid>
-
+      <ion-content>
+        <stencil-route-link url="/profile/stencil">
+          <ion-button>AAAAAAA</ion-button>
+        </stencil-route-link>
+        <ion-grid>
           <ion-row>
-            <ion-list no-lines>
-              {this.data.map((item) => (
-                <ion-item>
-                  <div>{item.name}</div>
-                  <p>{item.description}</p>
-                </ion-item>
-              ))}
-            </ion-list>
+            <ion-col col-6>
+              <ion-item>
+                <ion-input
+                  type="email"
+                  placeholder="Email"
+                  value={this.email}
+                  onInput={(event) => this.handleEmailChange(event)}
+                />
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-input
+                  type="password"
+                  placeholder="Password"
+                  value={this.password}
+                  min-length="7"
+                  onInput={(event) => this.handlePasswordChange(event)}
+                />
+              </ion-item>
+              <ion-button float-right onClick={() => this.doSignIn()}>
+                Sign In
+              </ion-button>
+              <ion-button float-right onClick={() => this.doSignOut()}>
+                Sign Out
+              </ion-button>
+            </ion-col>
           </ion-row>
-        </ion-content>
-      </ion-page>
-    );
+          <ion-row>
+            <ion-item>
+              <div>
+                Has Checked:{' '}
+                {this.hasChecked ? <scan>True</scan> : <scan>False</scan>}
+              </div>
+              <p>AAAAA: {JSON.stringify(this.hasChecked)}</p>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <div>
+                Is Authorized:{' '}
+                {this.isAuthorized ? <scan>True</scan> : <scan>False</scan>}
+              </div>
+              <div>BBBBB: {JSON.stringify(this.isAuthorized)}</div>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-button onClick={() => this.doListenForData()}>
+                Listen for data
+              </ion-button>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <div>Data: {JSON.stringify(this.data)}</div>
+            </ion-item>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row>
+          <ion-list no-lines>
+            {this.data.map((item) => (
+              <ion-item>
+                <div>{item.name}</div>
+                <p>{item.description}</p>
+              </ion-item>
+            ))}
+          </ion-list>
+        </ion-row>
+      </ion-content>,
+    ];
   }
 }

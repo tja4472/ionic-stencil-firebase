@@ -50,39 +50,37 @@ export class AppGizmo {
   }
   */
   render() {
-    return (
-      <ion-page>
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-buttons slot="start">
-              <stencil-route-link url="/">
-                <ion-button>
-                  <ion-icon slot="icon-only" name="arrow-back" />
-                </ion-button>
-              </stencil-route-link>
-            </ion-buttons>
-            <ion-buttons slot="end">
-              <ion-button onClick={() => this.addItem()}>
-                <ion-icon slot="icon-only" name="add" />
+    return [
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <stencil-route-link url="/">
+              <ion-button>
+                <ion-icon slot="icon-only" name="arrow-back" />
               </ion-button>
-            </ion-buttons>
-            <ion-title>Gizmos(Cloud Firestore)</ion-title>
-          </ion-toolbar>
-        </ion-header>
+            </stencil-route-link>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button onClick={() => this.addItem()}>
+              <ion-icon slot="icon-only" name="add" />
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Gizmos(Cloud Firestore)</ion-title>
+        </ion-toolbar>
+      </ion-header>,
 
-        <ion-content>
-          <ion-list>
-            {this.data.map((item) => (
-              <ion-item>
-                <p>
-                  <strong>{item.name}</strong>
-                </p>
-                <p>{item.description}</p>
-              </ion-item>
-            ))}
-          </ion-list>
-        </ion-content>
-      </ion-page>
-    );
+      <ion-content>
+        <ion-list>
+          {this.data.map((item) => (
+            <ion-item>
+              <p>
+                <strong>{item.name}</strong>
+              </p>
+              <p>{item.description}</p>
+            </ion-item>
+          ))}
+        </ion-list>
+      </ion-content>,
+    ];
   }
 }
