@@ -1,5 +1,4 @@
 import { Component, Prop } from '@stencil/core';
-import { ModalController } from '@ionic/core';
 
 @Component({
   tag: 'app-gizmo-detail',
@@ -8,7 +7,7 @@ import { ModalController } from '@ionic/core';
 export class AppGizmoDetail {
   //
   @Prop({ connect: 'ion-modal-controller' })
-  modalCtrl: ModalController;
+  modalCtrl: HTMLIonModalControllerElement;
 
   modalController: any;
   componentDidLoad() {

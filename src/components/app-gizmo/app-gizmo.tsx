@@ -1,5 +1,4 @@
 import { Component, Prop, State } from '@stencil/core';
-import { ModalController } from '@ionic/core';
 
 import { Gizmo } from './gizmo.model';
 import { GizmoDataService } from './gizmo.data.service';
@@ -12,7 +11,7 @@ export class AppGizmo {
   @State() data: Gizmo[] = [];
 
   @Prop({ connect: 'ion-modal-controller' })
-  modalCtrl: ModalController;
+  modalCtrl: HTMLIonModalControllerElement;
 
   private readonly userId = 'roNQiXFu3LQBzV860lsvXlGYCm03';
 

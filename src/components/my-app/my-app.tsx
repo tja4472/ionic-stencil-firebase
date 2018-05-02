@@ -1,7 +1,5 @@
 import '@ionic/core';
-import '@stencil/core';
 import { Component, Prop, Listen } from '@stencil/core';
-import { ToastController } from '@ionic/core';
 
 // This import loads the firebase namespace along with all its type information.
 import firebase from 'firebase/app';
@@ -24,7 +22,7 @@ import { MY_FIREBASE_APP_CONFIG } from './my-firebase-app-config';
 })
 export class MyApp {
   @Prop({ connect: 'ion-toast-controller' })
-  toastCtrl: ToastController;
+  toastCtrl: HTMLIonToastControllerElement;
 
   constructor() {
     console.log('MyApp:constructor');
@@ -32,31 +30,24 @@ export class MyApp {
     // firebase.firestore();
   }
 
-  componentDidLoad() {
-    /*
-      Handle service worker updates correctly.
-      This code will show a toast letting the
-      user of the PWA know that there is a 
-      new version available. When they click the
-      reload button it then reloads the page 
-      so that the new service worker can take over
-      and serve the fresh content
-    */
-    window.addEventListener('swUpdate', () => {
-      this.toastCtrl
-        .create({
-          message: 'New version available',
-          showCloseButton: true,
-          closeButtonText: 'Reload',
-        })
-        .then((toast) => {
-          toast.present();
-        });
+  /**
+   * Handle service worker updates correctly.
+   * This code will show a toast letting the
+   * user of the PWA know that there is a
+   * new version available. When they click the
+   * reload button it then reloads the page
+   * so that the new service worker can take over
+   * and serve the fresh content
+   */
+  @Listen('window:swUpdate')
+  async onSWUpdate() {
+    const toast = await this.toastCtrl.create({
+      message: 'New version available',
+      showCloseButton: true,
+      closeButtonText: 'Reload',
     });
-  }
-
-  @Listen('body:ionToastWillDismiss')
-  reload() {
+    await toast.present();
+    await toast.onWillDismiss();
     window.location.reload();
   }
 
