@@ -63,15 +63,18 @@ export class MyApp {
   render() {
     return (
       <ion-app>
-        <main>
-          <ion-router useHash={false}>
-            <ion-route url="/" component="app-home" />
-            <ion-route url="/firebase" component="app-firebase" />
-            <ion-route url="/profile/:name" component="app-profile" />
-            <ion-route url="/show-modal" component="tjaexa-show-modal" />
-            <ion-nav />
-          </ion-router>
-        </main>
+        <ion-router useHash={false}>
+          <ion-route url="/" component="app-home" />
+          <ion-route url="/firebase" component="app-firebase" />
+          <ion-route url="/gizmos" component="app-gizmo" />
+          <ion-route url="/sign-in" component="app-sign-in" />
+
+          <ion-route url="/show-modal" component="tjaexa-show-modal" />
+
+          <ion-route url="/profile/:name" component="app-profile" />
+        </ion-router>
+
+        <ion-nav />
       </ion-app>
     );
   }

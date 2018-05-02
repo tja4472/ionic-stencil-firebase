@@ -66,6 +66,72 @@ declare global {
 declare global {
 
   namespace StencilComponents {
+    interface AppGizmoDetail {
+
+    }
+  }
+
+  interface HTMLAppGizmoDetailElement extends StencilComponents.AppGizmoDetail, HTMLStencilElement {}
+
+  var HTMLAppGizmoDetailElement: {
+    prototype: HTMLAppGizmoDetailElement;
+    new (): HTMLAppGizmoDetailElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-gizmo-detail': HTMLAppGizmoDetailElement;
+  }
+  interface ElementTagNameMap {
+    'app-gizmo-detail': HTMLAppGizmoDetailElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-gizmo-detail': JSXElements.AppGizmoDetailAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppGizmoDetailAttributes extends HTMLAttributes {
+
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AppGizmo {
+
+    }
+  }
+
+  interface HTMLAppGizmoElement extends StencilComponents.AppGizmo, HTMLStencilElement {}
+
+  var HTMLAppGizmoElement: {
+    prototype: HTMLAppGizmoElement;
+    new (): HTMLAppGizmoElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-gizmo': HTMLAppGizmoElement;
+  }
+  interface ElementTagNameMap {
+    'app-gizmo': HTMLAppGizmoElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-gizmo': JSXElements.AppGizmoAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppGizmoAttributes extends HTMLAttributes {
+
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface AppHome {
 
     }
@@ -90,6 +156,39 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
+
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AppSignIn {
+
+    }
+  }
+
+  interface HTMLAppSignInElement extends StencilComponents.AppSignIn, HTMLStencilElement {}
+
+  var HTMLAppSignInElement: {
+    prototype: HTMLAppSignInElement;
+    new (): HTMLAppSignInElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-sign-in': HTMLAppSignInElement;
+  }
+  interface ElementTagNameMap {
+    'app-sign-in': HTMLAppSignInElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-sign-in': JSXElements.AppSignInAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppSignInAttributes extends HTMLAttributes {
 
     }
   }

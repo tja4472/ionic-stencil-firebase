@@ -10,18 +10,12 @@ export class AppHome {
       <ion-page>
         <ion-header>
           <ion-toolbar color="primary">
-            <ion-title>Ionic PWA Toolkit</ion-title>
+            <ion-title>Ionic Stencil Firebase</ion-title>
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
-          <p>
-            Welcome to the Ionic PWA Toolkit. You can use this starter to build
-            entire PWAs all with web components using Stencil and ionic/core!
-            Check out the readme for everything that comes in this starter out
-            of the box and Check out our docs on{' '}
-            <a href="https://stenciljs.com">stenciljs.com</a> to get started.
-          </p>
+          <p>Blah!!!</p>
 
           <e2e-attribute-basic
             single="Single"
@@ -32,9 +26,9 @@ export class AppHome {
           <ion-button data-testId="showModalPageButton" href={'/show-modal'}>
             Show Modal page
           </ion-button>
-          <ion-button href={'/firebase'}>
-            Show Firebase page
-          </ion-button>          
+          <ion-button href={'/firebase'}>Show Firebase page</ion-button>
+          <ion-button href={'/gizmos'}>Show Gizmos page</ion-button>
+          <ion-button href={'/sign-in'}>Sign In</ion-button>
         </ion-content>
       </ion-page>
     );
