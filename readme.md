@@ -12,6 +12,8 @@ https://github.com/firebase/firebase-js-sdk/issues/716
 How to only load the Firebase dependencies I need?
 https://github.com/firebase/firebase-js-sdk/issues/715
 
+> As @codinronan mentioned the scoped packages are not recommended for direct usage (though we use them to build the firebase package itself), hence why they have a major version of 0 (meaning they can break at any time).
+
 # Firebase
 
 ## package.json - dependencies
