@@ -1,14 +1,14 @@
 import '@ionic/core';
-import '@stencil/core';
+// import '@stencil/core';
 import { Component, Prop, Listen } from '@stencil/core';
-import { ToastController } from '@ionic/core';
+// import { ToastController } from '@ionic/core';
 
 // This import loads the firebase namespace along with all its type information.
 import firebase from '@firebase/app';
 
 // These imports load individual services into the firebase namespace.
 import '@firebase/auth';
-// import '@firebase/firestore';
+import '@firebase/firestore';
 
 // import firebase from '@firebase/app';
 // import firebase from 'firebase';
@@ -24,7 +24,7 @@ import { MY_FIREBASE_APP_CONFIG } from './my-firebase-app-config';
 })
 export class MyApp {
   @Prop({ connect: 'ion-toast-controller' })
-  toastCtrl: ToastController;
+  toastCtrl: HTMLIonToastControllerElement;
 
   constructor() {
     console.log('MyApp:constructor');
