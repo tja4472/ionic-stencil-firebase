@@ -20,10 +20,10 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@ionic/core": "4.0.0-alpha.4",
-    "@stencil/core": "0.8.0",
+    "@ionic/core": "4.0.0-alpha.6",
+    "@stencil/core": "0.8.2",
     "firebase": "5.0.2",
-    "rxjs": "6.0.0"
+    "rxjs": "6.1.0"
   },
   "devDependencies": {
     "@stencil/dev-server": "0.0.18",

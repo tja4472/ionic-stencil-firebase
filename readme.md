@@ -1,18 +1,3 @@
-# Property 'database' does not exist on type 'FirebaseNamespace'
-https://github.com/firebase/firebase-js-sdk/issues/791
-
-Copied index.d.ts from
-
-```bash
-C:\VSCode\2018\git-hub-tim\ionic-stencil-firebase\node_modules\@firebase\firestore\dist\packages\firestore
-```
-
-to
-
-```bash
-C:\VSCode\2018\git-hub-tim\ionic-stencil-firebase\node_modules\@firebase\firestore\dist
-```
-
 # Firebase
 
 ## package.json - dependencies
