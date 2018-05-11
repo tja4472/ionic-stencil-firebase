@@ -3,15 +3,16 @@ import { Component, State } from '@stencil/core';
 // This import loads the firebase namespace along with all its type information.
 import firebase from 'firebase/app';
 
-// import firebase from 'firebase';
+// These are imported in my-app.tsx.
+// These imports load individual services into the firebase namespace.
+// import 'firebase/auth';
+// import 'firebase/firestore';
 
-// import firebase from '@firebase/app';
-// import '@firebase/auth';
-// import '@firebase/firestore';
 import { User } from '@firebase/auth-types';
+import { FirebaseFirestore } from '@firebase/firestore-types';
 
 import { BehaviorSubject } from 'rxjs';
-import { FirebaseFirestore } from '@firebase/firestore-types';
+
 import { Todo } from './todo.model';
 
 const DATA_COLLECTION = 'current-todos';

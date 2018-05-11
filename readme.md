@@ -1,3 +1,18 @@
+# Property 'database' does not exist on type 'FirebaseNamespace'
+https://github.com/firebase/firebase-js-sdk/issues/791
+
+Copied index.d.ts from
+
+```bash
+C:\VSCode\2018\git-hub-tim\ionic-stencil-firebase\node_modules\@firebase\firestore\dist\packages\firestore
+```
+
+to
+
+```bash
+C:\VSCode\2018\git-hub-tim\ionic-stencil-firebase\node_modules\@firebase\firestore\dist
+```
+
 # Firebase
 
 ## package.json - dependencies
@@ -31,9 +46,9 @@ exports.config = {
 
 ## Firebase documentation
 
-https://firebase.google.com/docs/firestore/?authuser=0
-
-https://firebase.google.com/docs/auth/web/start?authuser=0
+* https://firebase.google.com/docs/firestore/?authuser=0
+* https://firebase.google.com/docs/auth/web/start?authuser=0
+* https://firebase.google.com/support/release-notes/js?authuser=0
 
 # Setup
 

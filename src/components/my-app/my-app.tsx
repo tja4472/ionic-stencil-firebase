@@ -8,12 +8,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-// import firebase from '@firebase/app';
-// import firebase from 'firebase';
-
-// These imports load individual services into the firebase namespace.
-// import '@firebase/auth';
-// import '@firebase/firestore';
 import { MY_FIREBASE_APP_CONFIG } from './my-firebase-app-config';
 
 @Component({

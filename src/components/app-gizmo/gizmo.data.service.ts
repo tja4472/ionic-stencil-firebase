@@ -1,8 +1,14 @@
 import { Gizmo } from './gizmo.model';
-import firebase from 'firebase';
-import '@firebase/auth';
-import '@firebase/firestore';
+
+// This import loads the firebase namespace along with all its type information.
+import firebase from 'firebase/app';
+
+// These are imported in my-app.tsx.
+// These imports load individual services into the firebase namespace.
+// import 'firebase/firestore';
+
 import { FirebaseFirestore } from '@firebase/firestore-types';
+
 import { BehaviorSubject } from 'rxjs';
 const DATA_COLLECTION = 'gizmos';
 const USERS_COLLECTION = 'users';
