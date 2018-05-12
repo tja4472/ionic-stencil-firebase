@@ -52,6 +52,7 @@ export class MyApp {
 
         <ion-route url="/home" component="app-home" />
         <ion-route url="/firebase" component="app-firebase" />
+        <ion-route url="/firebase-cloud-firestore" component="page-firebase-cloud-firestore" />        
         <ion-route url="/gizmos" component="app-gizmo" />
         <ion-route url="/sign-in" component="app-sign-in" />
 
