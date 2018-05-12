@@ -53,6 +53,20 @@ export class AppFirebase {
     this.password = event.target.value;
   }
 
+  doCreateItem(): any {
+    console.log('## doCreateItem ##');
+  }
+
+  doDeleteItem(item: Todo): any {
+    console.log('## doDeleteItem ##');
+    console.log('item>', item);
+  }
+
+  doUpdateItem(item: Todo): any {
+    console.log('## doUpdateItem ##');
+    console.log('item>', item);
+  }
+
   doSignIn() {
     console.log('doSignIn:email>', this.email);
     console.log('doSignIn:password>', this.password);
@@ -162,6 +176,19 @@ export class AppFirebase {
     });
   }
 
+  /*
+  private createItem(item: Gizmo, userId: string): Promise<void> {
+    //
+    const doc = this.toFirestoreDoc(item);
+    const dateNow = Date().toString();
+    doc.id = this.afs.createId();
+    const recordToSet: FirestoreDoc = {
+      ...doc,
+      sysDateCreatedOn: dateNow,
+      sysDateUpdatedOn: dateNow,
+    };  
+  */
+
   render() {
     return [
       <ion-header>
@@ -174,9 +201,6 @@ export class AppFirebase {
       </ion-header>,
 
       <ion-content>
-        <stencil-route-link url="/profile/stencil">
-          <ion-button>AAAAAAA</ion-button>
-        </stencil-route-link>
         <ion-grid>
           <ion-row>
             <ion-col col-6>
@@ -241,8 +265,10 @@ export class AppFirebase {
 
         <ion-list>
           <ion-list-header color="secondary">
-            Data List
-            <ion-button slot="end">Create</ion-button>
+            Item List
+            <ion-button onClick={() => this.doCreateItem()} slot="end">
+              Create
+            </ion-button>
           </ion-list-header>
           {this.data.map((item) => (
             <ion-item-divider>
@@ -251,8 +277,12 @@ export class AppFirebase {
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
                 </ion-label>
-                <ion-button slot="end">Update</ion-button>
-                <ion-button slot="end">Delete</ion-button>
+                <ion-button onClick={() => this.doUpdateItem(item)} slot="end">
+                  Update
+                </ion-button>
+                <ion-button onClick={() => this.doDeleteItem(item)} slot="end">
+                  Delete
+                </ion-button>
               </ion-item>
             </ion-item-divider>
           ))}
