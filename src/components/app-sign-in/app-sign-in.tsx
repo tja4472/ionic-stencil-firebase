@@ -26,7 +26,10 @@ export class AppSignIn {
   render() {
     return [
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" />
+          </ion-buttons>
           <ion-title>Sign In</ion-title>
         </ion-toolbar>
       </ion-header>,

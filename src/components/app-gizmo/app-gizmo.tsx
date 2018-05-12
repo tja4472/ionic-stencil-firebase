@@ -53,11 +53,7 @@ export class AppGizmo {
       <ion-header>
         <ion-toolbar color="primary">
           <ion-buttons slot="start">
-            <stencil-route-link url="/">
-              <ion-button>
-                <ion-icon slot="icon-only" name="arrow-back" />
-              </ion-button>
-            </stencil-route-link>
+            <ion-back-button defaultHref="/" />
           </ion-buttons>
           <ion-buttons slot="end">
             <ion-button onClick={() => this.addItem()}>

@@ -4,8 +4,8 @@ import { Component, Prop, Listen } from '@stencil/core';
   tag: 'tjaexa-show-modal',
   styleUrl: 'tjaexa-show-modal.scss',
   host: {
-    'data-testid' : "showModalPage"
-  }
+    'data-testid': 'showModalPage',
+  },
 })
 export class ShowModal {
   //
@@ -16,9 +16,9 @@ export class ShowModal {
   modalDidDismiss(event: CustomEvent) {
     if (event) {
       console.log('modalDidDismiss:event>', event);
-      // console.log('modalDidDismiss:event.detail.namespace>', 
-      // event.detail.namespace);      
-      console.log('modalDidDismiss:event.detail.data>', event.detail.data);      
+      // console.log('modalDidDismiss:event.detail.namespace>',
+      // event.detail.namespace);
+      console.log('modalDidDismiss:event.detail.data>', event.detail.data);
     }
   }
 
@@ -34,12 +34,18 @@ export class ShowModal {
     return [
       <ion-header>
         <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" />
+          </ion-buttons>
           <ion-title>Show Modal</ion-title>
         </ion-toolbar>
       </ion-header>,
 
       <ion-content>
-        <ion-button data-testId="showModalFormButton" onClick={() => this.showModalForm()}>
+        <ion-button
+          data-testId="showModalFormButton"
+          onClick={() => this.showModalForm()}
+        >
           Show Modal Form
         </ion-button>
       </ion-content>,

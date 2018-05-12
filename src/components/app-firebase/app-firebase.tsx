@@ -167,11 +167,7 @@ export class AppFirebase {
       <ion-header>
         <ion-toolbar color="primary">
           <ion-buttons slot="start">
-            <stencil-route-link url="/">
-              <ion-button>
-                <ion-icon slot="icon-only" name="arrow-back" />
-              </ion-button>
-            </stencil-route-link>
+            <ion-back-button defaultHref="/"></ion-back-button>
           </ion-buttons>
           <ion-title>Firebase</ion-title>
         </ion-toolbar>
