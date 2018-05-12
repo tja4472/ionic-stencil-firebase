@@ -167,7 +167,7 @@ export class AppFirebase {
       <ion-header>
         <ion-toolbar color="primary">
           <ion-buttons slot="start">
-            <ion-back-button defaultHref="/"></ion-back-button>
+            <ion-back-button defaultHref="/" />
           </ion-buttons>
           <ion-title>Firebase</ion-title>
         </ion-toolbar>
@@ -239,16 +239,24 @@ export class AppFirebase {
           </ion-row>
         </ion-grid>
 
-        <ion-row>
-          <ion-list no-lines>
-            {this.data.map((item) => (
+        <ion-list>
+          <ion-list-header color="secondary">
+            Data List
+            <ion-button slot="end">Create</ion-button>
+          </ion-list-header>
+          {this.data.map((item) => (
+            <ion-item-divider>
               <ion-item>
-                <div>{item.name}</div>
-                <p>{item.description}</p>
+                <ion-label>
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                </ion-label>
+                <ion-button slot="end">Update</ion-button>
+                <ion-button slot="end">Delete</ion-button>
               </ion-item>
-            ))}
-          </ion-list>
-        </ion-row>
+            </ion-item-divider>
+          ))}
+        </ion-list>
       </ion-content>,
     ];
   }
