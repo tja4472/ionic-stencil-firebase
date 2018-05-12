@@ -45,20 +45,27 @@ export class MyApp {
     window.location.reload();
   }
 
+  renderRouter() {
+    return (
+      <ion-router useHash={false}>
+        <ion-route-redirect from="/" to="/home" />
+
+        <ion-route url="/home" component="app-home" />
+        <ion-route url="/firebase" component="app-firebase" />
+        <ion-route url="/gizmos" component="app-gizmo" />
+        <ion-route url="/sign-in" component="app-sign-in" />
+
+        <ion-route url="/show-modal" component="tjaexa-show-modal" />
+
+        <ion-route url="/profile/:name" component="app-profile" />
+      </ion-router>
+    );
+  }
+
   render() {
     return (
       <ion-app>
-        <ion-router useHash={false}>
-          <ion-route url="/" component="app-home" />
-          <ion-route url="/firebase" component="app-firebase" />
-          <ion-route url="/gizmos" component="app-gizmo" />
-          <ion-route url="/sign-in" component="app-sign-in" />
-
-          <ion-route url="/show-modal" component="tjaexa-show-modal" />
-
-          <ion-route url="/profile/:name" component="app-profile" />
-        </ion-router>
-
+        {this.renderRouter()}
         <ion-nav />
       </ion-app>
     );
