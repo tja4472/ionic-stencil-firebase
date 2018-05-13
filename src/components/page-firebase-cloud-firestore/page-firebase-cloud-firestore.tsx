@@ -233,20 +233,18 @@ export class AppFirebase {
           </ion-row>
           <ion-row>
             <ion-item>
-              <div>
+              <ion-label>
                 Has Checked:{' '}
-                {this.hasChecked ? <scan>True</scan> : <scan>False</scan>}
-              </div>
-              <p>AAAAA: {JSON.stringify(this.hasChecked)}</p>
+                {this.hasChecked ? 'True' : 'False'}
+              </ion-label>
             </ion-item>
           </ion-row>
           <ion-row>
             <ion-item>
-              <div>
+              <ion-label>
                 Is Authorized:{' '}
-                {this.isAuthorized ? <scan>True</scan> : <scan>False</scan>}
-              </div>
-              <div>BBBBB: {JSON.stringify(this.isAuthorized)}</div>
+                {this.isAuthorized ? 'True' : 'False'}
+              </ion-label>
             </ion-item>
           </ion-row>
           <ion-row>
