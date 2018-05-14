@@ -23,3 +23,5 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+my-firebase-app-config.ts
