@@ -13,17 +13,18 @@ import { FirebaseFirestore } from '@firebase/firestore-types';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { Todo } from './todo.model';
+import { Task } from './task.model';
 
-const DATA_COLLECTION = 'current-todos';
+const DATA_COLLECTION = 'tasks';
 const USERS_COLLECTION = 'users';
+
+// https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0
 
 interface FirestoreDoc {
   id: string;
-  description?: string;
-  index: number;
   name: string;
-  isComplete: boolean;
+  sysDateCreated: string;
+  sysDateUpdated: string;
 }
 
 @Component({
@@ -41,7 +42,7 @@ export class AppFirebase {
 
   @State() hasChecked: boolean;
   @State() isAuthorized: boolean;
-  @State() data: Todo[] = [];
+  @State() data: Task[] = [];
 
   dummy = 'Dummy String';
 
@@ -55,16 +56,43 @@ export class AppFirebase {
 
   doCreateItem(): any {
     console.log('## doCreateItem ##');
+    // this.firestoreCollection(this.userId)
+    const now = Date().toString();
+    const doc: FirestoreDoc = {
+      id: '',
+      name: 'Task:' + now,
+      sysDateCreated: now,
+      sysDateUpdated: now,
+    };
+
+    // Add a new document with a generated id.
+    const newRef = this.firestoreCollection(this.userId).doc();
+    doc.id = newRef.id;
+    newRef.set(doc);
   }
 
-  doDeleteItem(item: Todo): any {
+  doDeleteItem(item: Task): any {
     console.log('## doDeleteItem ##');
     console.log('item>', item);
+    this.firestoreCollection(this.userId)
+      .doc(item.id)
+      .delete();
   }
 
-  doUpdateItem(item: Todo): any {
+  doUpdateItem(item: Task): any {
     console.log('## doUpdateItem ##');
     console.log('item>', item);
+    const now = Date().toString();
+    const doc: FirestoreDoc = {
+      id: item.id,
+      name: 'Task(U):' + now,
+      sysDateCreated: item.sysDateCreated,
+      sysDateUpdated: now,
+    };
+
+    this.firestoreCollection(this.userId)
+      .doc(item.id)
+      .set(doc);
   }
 
   doSignIn() {
@@ -87,25 +115,27 @@ export class AppFirebase {
     */
   }
 
+  doSignOut() {
+    firebase.auth().signOut();
+  }
+
   doListenForData() {
-    this.afs = firebase.firestore();
+    // this.afs = firebase.firestore();
 
-    this.firestoreCollection('default-list', this.userId).onSnapshot(
-      (querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // console.log('AA>', doc.id, '=>', doc.data());
-          const aaa = this.fromFirestoreDoc(doc.data() as FirestoreDoc);
-          console.log('AA>', aaa);
-        });
+    this.firestoreCollection(this.userId).onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // console.log('AA>', doc.id, '=>', doc.data());
+        const aaa = this.fromFirestoreDoc(doc.data() as FirestoreDoc);
+        console.log('AA>', aaa);
+      });
 
-        const bb = querySnapshot.docs.map((x) =>
-          this.fromFirestoreDoc(x.data() as FirestoreDoc),
-        );
+      const bb = querySnapshot.docs.map((x) =>
+        this.fromFirestoreDoc(x.data() as FirestoreDoc),
+      );
 
-        console.log('BB>', bb);
-        this.data = [...bb];
-      },
-    );
+      console.log('BB>', bb);
+      this.data = [...bb];
+    });
 
     /*    
     this.firestoreCollection('default-list', this.userId).get().then((snapshot) => {
@@ -116,36 +146,34 @@ export class AppFirebase {
 */
   }
 
-  private firestoreCollection(todoListId: string, userId: string) {
+  private firestoreCollection(userId: string) {
     //
-    return this.afs
-      .collection(USERS_COLLECTION)
-      .doc(userId)
-      .collection('todo-lists')
-      .doc(todoListId)
-      .collection(DATA_COLLECTION);
+    return (
+      this.afs
+        .collection(USERS_COLLECTION)
+        .doc(userId)
+        // .collection('todo-lists')
+        // .doc(todoListId)
+        .collection(DATA_COLLECTION)
+    );
   }
 
-  private fromFirestoreDoc(x: FirestoreDoc): Todo {
+  private fromFirestoreDoc(x: FirestoreDoc): Task {
     //
-    const result: Todo = {
-      description: x.description,
+    const result: Task = {
       id: x.id,
-      index: x.index,
-      isComplete: x.isComplete,
       name: x.name,
+      sysDateCreated: x.sysDateCreated,
+      sysDateUpdated: x.sysDateUpdated,
     };
 
     return result;
   }
 
-  doSignOut() {
-    firebase.auth().signOut();
-  }
-
   componentDidLoad() {
     //
     console.log('AppFirebase:componentDidLoad');
+    this.afs = firebase.firestore();
   }
 
   componentWillLoad() {
@@ -187,6 +215,14 @@ export class AppFirebase {
       sysDateCreatedOn: dateNow,
       sysDateUpdatedOn: dateNow,
     };  
+  */
+
+  /*
+           <ion-row>
+            <ion-item>
+              <div>Data: {JSON.stringify(this.data)}</div>
+            </ion-item>
+          </ion-row>
   */
 
   render() {
@@ -234,16 +270,11 @@ export class AppFirebase {
           <ion-row>
             <ion-item>
               <ion-label>
-                Has Checked:{' '}
-                {this.hasChecked ? 'True' : 'False'}
-              </ion-label>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <ion-item>
-              <ion-label>
-                Is Authorized:{' '}
-                {this.isAuthorized ? 'True' : 'False'}
+                <h2>Authentication</h2>
+                <p>
+                  Has Checked: {this.hasChecked ? 'True' : 'False'} <br />
+                  Is Authorized: {this.isAuthorized ? 'True' : 'False'}
+                </p>
               </ion-label>
             </ion-item>
           </ion-row>
@@ -252,11 +283,6 @@ export class AppFirebase {
               <ion-button onClick={() => this.doListenForData()}>
                 Listen for data
               </ion-button>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <ion-item>
-              <div>Data: {JSON.stringify(this.data)}</div>
             </ion-item>
           </ion-row>
         </ion-grid>
@@ -272,8 +298,9 @@ export class AppFirebase {
             <ion-item-divider>
               <ion-item>
                 <ion-label>
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
+                  <h2>{item.name}</h2>
+                  <p>Date Created: {item.sysDateCreated}</p>
+                  <p>Date Updated: {item.sysDateUpdated}</p>
                 </ion-label>
                 <ion-button onClick={() => this.doUpdateItem(item)} slot="end">
                   Update
