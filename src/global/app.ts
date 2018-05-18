@@ -1,6 +1,6 @@
-import { setupConfig } from '@ionic/core';
+// import { setupConfig } from '@ionic/core';
 
-setupConfig({
+// setupConfig({
   // uncomment the following line to force mode to be Material Design
   // mode: 'md'
-});
+// });
