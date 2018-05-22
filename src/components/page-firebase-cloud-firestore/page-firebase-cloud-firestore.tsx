@@ -238,6 +238,17 @@ export class AppFirebase {
 
       <ion-content>
         <ion-grid>
+        <ion-row>
+            <ion-item>
+              <ion-label>
+                <h2>Sign In Details</h2>
+                <p>
+                  email: a.a@a.com<br />
+                  password: password
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-row>          
           <ion-row>
             <ion-col col-6>
               <ion-item>
