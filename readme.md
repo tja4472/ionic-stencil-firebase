@@ -9,9 +9,7 @@
 ## Requires src/components/my-app/my-firebase-app-config.ts
 
 ```typescript
-import { FirebaseOptions } from '@firebase/app-types';
-
-export const MY_FIREBASE_APP_CONFIG: FirebaseOptions = {
+export const MY_FIREBASE_APP_CONFIG = {
   apiKey: 'XXXXXX',
   authDomain: 'XXXXXX',
   databaseURL: 'XXXXXX',

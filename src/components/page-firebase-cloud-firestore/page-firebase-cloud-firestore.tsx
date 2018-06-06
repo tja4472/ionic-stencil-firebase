@@ -7,9 +7,7 @@ import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 // import 'firebase/auth';
 // import 'firebase/firestore';
-
-import { User } from '@firebase/auth-types';
-import { FirebaseFirestore } from '@firebase/firestore-types';
+import { User } from 'firebase/app';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -38,7 +36,7 @@ export class AppFirebase {
   private authHasChecked$ = new BehaviorSubject(false);
   private authIsAuthorized$ = new BehaviorSubject(false);
   userId: string;
-  afs: FirebaseFirestore;
+  afs: firebase.firestore.Firestore;;
 
   @State() hasChecked: boolean;
   @State() isAuthorized: boolean;

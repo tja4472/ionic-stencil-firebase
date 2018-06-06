@@ -7,8 +7,6 @@ import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 // import 'firebase/firestore';
 
-import { FirebaseFirestore } from '@firebase/firestore-types';
-
 import { BehaviorSubject } from 'rxjs';
 const DATA_COLLECTION = 'gizmos';
 const USERS_COLLECTION = 'users';
@@ -23,7 +21,7 @@ interface FirestoreDoc {
 
 export class GizmoDataService {
   //
-  private firestore: FirebaseFirestore;
+  private firestore: firebase.firestore.Firestore;;
   private items$ = new BehaviorSubject<Gizmo[]>([]);
 
   constructor() {
